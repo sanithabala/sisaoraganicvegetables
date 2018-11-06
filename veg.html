@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Bootstrap</title>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+      <style>
+    </style>
+        <body>
+            <div id="cart_btn">
+                <button onclick="addtocart()">Add to cart</button>
+            </div>
+<!--
+            <div>
+                <button onclick="decrement()">-</button>  
+                <input type="number" value="1" readonly id="qu"/>
+                <button onclick="increment()">+</button>  <br>
+            </div>
+-->
+            <h2>Unit price: <span id="price"></span></h2>
+            <script>
+                //max 5
+                //min 1
+                
+                var price = document.getElementById("price");
+                var cart = document.getElementById("cart_btn");
+                var unitPrice = 12;
+                var item_price;
+                
+                function addtocart(){
+                    cart.innerHTML = '<button onclick="decrement()">-</button><input type="number" value="1" readonly id="qu"/><button onclick="increment()">+</button><br>';
+                }
+                
+                function decrement(){
+                    var ip = document.getElementById("qu");
+                    var a = parseInt(ip.value);
+                    /*
+                    if(a <= 1)
+                        
+                    else
+                        decrement
+                    */
+                    if(a <= 1){
+                        cart.innerHTML = '<button onclick="addtocart()">Add to cart</button>';
+                        price.innerHTML = '';
+                    }else{
+                        var c = a - 1;
+                        ip.value = c;
+                        console.log(c);
+                        itemPrice(unitPrice, c);
+                    }
+                }
+                function increment(){
+                    var ip = document.getElementById("qu");
+                    var a = parseInt(ip.value);
+                    /*
+                        if ip.value > 5
+                            exceeded
+                        else
+                            increment
+                    */
+                    if(a>=5){
+                        alert("Maximum number exceeded!!!")
+                    }else{
+                        var c = a + 1 ;
+                        ip.value = c;
+                        console.log(c * unitPrice);
+                        itemPrice(unitPrice, c);
+                    }
+                }
+                function itemPrice(item_price, quantity){
+                    item_price = item_price * quantity ; 
+                    price.innerHTML = item_price;
+                }
+            </script>
+        </body>
+    </html>
